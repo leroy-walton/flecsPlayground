@@ -14,20 +14,6 @@ struct Velocity
     double x, y;
 };
 
-struct Attractor
-{
-    double strength;
-};
-
-
-float distance(Position p1, Position p2) {
-    float dx = p1.x - p2.x;
-    float dy = p1.y - p2.y;
-    return sqrt(dx * dx + dy * dy);
-}
-
-
-
 int main(int, char *[])
 {
     const int screenWidth = 1000;
@@ -54,33 +40,7 @@ int main(int, char *[])
                 if ( p.x > screenWidth ) v.x = -v.x;
                 if ( p.y > screenHeight ) v.y = -v.y; });
     
-    // System that simulates attraction between all entities
-    //     for (flecs::entity e : it) {
-    //         auto &p = e.get<Position>();
-    //         for (auto e2 : it) {
-    //             if (e != e2) {
-    //                 auto &p2 = e2.get<Position>();
-    //                 auto dx = p2.x - p.x;
-    //                 auto dy = p2.y - p.y;
-    //                 auto distance = sqrt(dx * dx + dy * dy);
-    //                 if (distance > 0) {
-    //                     auto force = 1 / distance;
-    //                     e.modify<Velocity>([&](Velocity &v) {
-    //                         v.x += dx * force;
-    //                         v.y += dy * force;
-    //                     });
-    //                 }
-    //             }
-    //         }
-    //     }
-    // });
-        //     auto &p2 = e.get<Position>();
-        //     auto &v2 = e.get<Velocity>();
-        //     auto d = sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
-        //     auto f = 1.0 / (d * d);
-        //     v1.x += (p2.x - p1.x) * f;
-        //     v1.y += (p2.y - p1.y) * f;
-    
+
     InitWindow(screenWidth, screenHeight, "Flecs - Raylib Example");
     SetTargetFPS(60);
 
